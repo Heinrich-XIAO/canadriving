@@ -1,30 +1,39 @@
 [gd_scene format=3 uid="uid://y7y0xu3cxeoq"]
 
-[ext_resource type="Texture2D" uid="uid://dnwhe583k4k6u" path="res://icon.svg" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bnqgesqlnl4p5" path="res://background_imgupscaler.ai_General_4K.jpg" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://b1ysbxlkthmda" path="res://background.gd" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://ioiiy6kj05ib" path="res://pngtree-pneumatic-windscreen-wiper-png-image_11713071-3362663127.png" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://bqhttgr8khdwg" path="res://windshieldwiper.gd" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://btv2l51f4ixyk" path="res://car.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://c4eo20o3xyxmo" path="res://instructions.gd" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://uxa3jb12nvmv" path="res://camera.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://ti1s3fob6t5w" path="res://rich_text_label.gd" id="8_5vw27"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7uyj"]
-size = Vector2(64, 128)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_272bh"]
+load_path = "res://.godot/imported/Screenshot 2026-09-19 at 18.51.13.png-b2fe4ca90c55ce6798567c842c16fe5e.ctex"
+
+[sub_resource type="SystemFont" id="SystemFont_te3c7"]
+font_names = PackedStringArray("JetBrains Mono")
+
+[sub_resource type="Theme" id="Theme_gfqsn"]
+default_font = SubResource("SystemFont_te3c7")
+default_font_size = 64
 
 [node name="Node" type="Node" unique_id=1256614631]
-
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1886236338]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1552965711]
-shape = SubResource("RectangleShape2D_d7uyj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1357066688]
-scale = Vector2(0.5, 1)
-texture = ExtResource("1_h2yge")
 
 [node name="background" type="Sprite2D" parent="." unique_id=1446354742]
 position = Vector2(502, 335)
 texture = ExtResource("2_h2yge")
 offset = Vector2(-22.92, -300)
 script = ExtResource("3_lquwl")
+
+[node name="car" type="Sprite2D" parent="." unique_id=13790179]
+position = Vector2(491.99997, 341)
+scale = Vector2(0.56140363, 0.56140363)
+texture = SubResource("CompressedTexture2D_272bh")
+script = ExtResource("6_7mycd")
+scale_scale = 2.0
+lane = 0.565
 
 [node name="windshieldwiper" type="Sprite2D" parent="." unique_id=1130884237]
 position = Vector2(450, 515)
@@ -34,4 +43,31 @@ centered = false
 offset = Vector2(0, -360)
 script = ExtResource("5_7mycd")
 
-[node name="car" type="Sprite2D" parent="." unique_id=334283857]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=377782930]
+scale = Vector2(0.56140363, 0.56140363)
+script = ExtResource("7_272bh")
+
+[node name="instructions" type="RichTextLabel" parent="." unique_id=567111104]
+offset_right = 749.0
+offset_bottom = 180.0
+theme = SubResource("Theme_gfqsn")
+text = "A: left
+D: right"
+horizontal_alignment = 2
+script = ExtResource("7_5vw27")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1441472687]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -466.0
+offset_top = -196.0
+offset_right = -526.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_gfqsn")
+text = "You Crashed on Hwy 417 after successfully dodging x cars"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_5vw27")
