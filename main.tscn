@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c4eo20o3xyxmo" path="res://instructions.gd" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://uxa3jb12nvmv" path="res://camera.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://ti1s3fob6t5w" path="res://rich_text_label.gd" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://doni5a7g7kdx8" path="res://button.gd" id="9_kek77"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_272bh"]
 load_path = "res://.godot/imported/Screenshot 2026-09-19 at 18.51.13.png-b2fe4ca90c55ce6798567c842c16fe5e.ctex"
@@ -71,3 +72,19 @@ text = "You Crashed on Hwy 417 after successfully dodging x cars"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_5vw27")
+
+[node name="Button" type="Button" parent="." unique_id=1982088812]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -15.5
+offset_right = 32.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+text = "Restart"
+script = ExtResource("9_kek77")

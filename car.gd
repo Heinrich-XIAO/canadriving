@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var time = 0
+var time = -2.5
 var speed_scale = 0.75
 var crashed = false
 var score = 0
@@ -12,6 +12,7 @@ func _ready() -> void:
 	var screen_size = get_viewport_rect().size
 	self.position = screen_size/2
 	self.scale = Vector2.ZERO
+	self.visible = false
 
 func bg_relative(vec: Vector2) -> Vector2:
 	var screen_size = get_viewport_rect().size
@@ -19,9 +20,14 @@ func bg_relative(vec: Vector2) -> Vector2:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	time += delta * speed_scale
 	if $"../car".crashed:
 		self.visible = false
 		return
+	if time < 0:
+		return
+	if time > 0:
+		self.visible = true
 	var screen_size = get_viewport_rect().size
 	var t = lerp(0.0, 0.6, lane) * 3.0
 
@@ -47,7 +53,6 @@ func _process(delta: float) -> void:
 		)
 	self.position = lerp($"../background".position, end_pos, pow(time, 2))
 	self.scale = Vector2.ONE * pow(time, 2) * speed_scale * scale_scale
-	time += delta * speed_scale
 	
 	self.rotation = lerp(0, 1, lerp(0.3, -0.3, lane))
 	if self.position.x > $"../background".position.x:

@@ -1,7 +1,7 @@
 extends Camera2D
 
 var start = Vector2.ZERO
-@export_range(0.0, 1.0) var lane: float = 0.0
+@export_range(0.0, 1.0) var lane: float = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -12,6 +12,8 @@ func _process(delta: float) -> void:
 	if $"../car".crashed:
 		self.visible = false
 		return
+	else:
+		self.visible = true
 	screen_size = get_viewport_rect().size
 	var texture_size: Vector2 = self.texture.get_size()
 	self.position = Vector2(screen_size.x/4*3, screen_size.y+250)

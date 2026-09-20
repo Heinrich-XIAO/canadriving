@@ -13,3 +13,5 @@ func _process(delta: float) -> void:
 	if $"../car".crashed:
 		self.visible = true
 		self.text = "You Crashed on Hwy 417 in Ottawa after successfully dodging %s cars" % str($"../car".score)
+	else:
+		self.visible = false
